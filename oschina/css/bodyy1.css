@@ -1,0 +1,47 @@
+.pdd1 .sz2{
+    width: 985px;
+    height: 80px;
+    margin: auto;
+    position: relative;
+
+}
+.pdd1 .sz2 .gc3{
+    width: 335px;
+    height: 80px;
+    position: relative;
+}
+.pdd1 .sz2 .gc3 .xx1{
+    width: 180px;
+    height: 80px;
+}
+.pdd1 .sz2 .gc3 .xx2{
+    width: 155px;
+    height: 80px;
+    position: absolute;
+    top: 0px;
+    left: 200px;
+    line-height: 80px;
+    font-size: 28px;
+    color: #45AA53;
+    font-weight: bold;
+}
+.pdd1 .sz2 .gc4{
+    width: 305px;
+    height: 34px;
+   /* background: gray;*/
+    position: absolute;
+    top: 24px;
+    left: 660px;
+}
+.pdd1 .sz2 .gc4 .zz1{
+    width: 250px;
+    height: 32px;
+    position: relative;
+}
+.pdd1 .sz2 .gc4 .zz2{
+    width: 55px;
+    height: 34px;
+    position: absolute;
+    top: 0px;
+    left: 251px;
+}

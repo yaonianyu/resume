@@ -1,0 +1,350 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+li {
+    list-style: none;
+}
+
+.clear:after {
+    content: "";
+    display: block;
+    clear: both;
+    overflow: hidden;
+    visibility: hidden;
+}
+
+body {
+    font-size: 14px;
+    background: #FFEFD5;
+    background-size: cover;
+    color: #333;
+}
+
+a {
+    text-decoration: none;
+}
+
+#fm{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+.player-box {
+    width: 610px;
+    height: 430px;
+    top: 40px;
+}
+
+.player-box,
+.fm-body h4 {
+    position: absolute;
+    left: 150px;
+}
+
+.fm-body i {
+    display: inline-block;
+    width: 14px;
+    height: 12px;
+    background:  no-repeat;
+    margin-right: 10px;
+}
+
+.fm-body h4 {
+    top: 0;
+    height: 40px;
+    line-height: 40px;
+    font-size: 24px;
+    color: #fff;
+    font-weight: normal;
+}
+
+.fm-main {
+    padding-left: 100px;
+    position: relative;
+    transition: all 0.3s;
+    overflow: hidden;
+    height: 100%;
+}
+
+.fm-body {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    left: 0;
+    top: 0;
+}
+
+
+.player-box .lrc {
+    position: absolute;
+    left: 400px;
+    top: -30px;
+}
+
+.player-box .song {
+    width: 260px;
+    background: #fff;
+    padding: 10px;
+    height: 310px;
+}
+
+.player-box .lrc {
+    width: 290px;
+    background: rgba(0, 0, 0, 0.15);
+    height: 390px;
+    padding: 20px;
+}
+
+.player-box .lrc-main {
+    height: 100%;
+    overflow: hidden;
+    position: relative;
+}
+
+.lrc ul {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+}
+
+.lrc ul li {
+    line-height: 26px;
+    color: #fff;
+    opacity: 0.7
+}
+
+.lrc ul li.active {
+    margin: 10px 0;
+    font-size: 22px;
+    opacity: 1;
+    line-height: 30px;
+}
+.song .song-img {
+    height: 99px;
+    background: #fff;
+    position: relative;
+}
+
+.song-img img {
+    width: 99px;
+}
+
+.song .song-name {
+    height: 30px;
+    line-height: 30px;
+    font-size: 18px;
+    overflow: hidden;
+    margin-top: 10px;
+}
+
+.song .song-author {
+    height: 24px;
+    line-height: 24px;
+}
+
+.song .control {
+    height: 20px;
+    display: inline-block;
+    margin: 20px 0 20px 20px;
+}
+
+.control li {
+    float: left;
+    width: 20px;
+    height: 20px;
+}
+.control li span{
+    font-size: 20px;
+    color: darkgray;
+}
+
+.control li a {
+    display: block;
+    height: 100%;
+    background:  no-repeat;
+}
+
+.control .item-play .play {
+    background-position: -444px 0;
+}
+
+.control .item-play .play:hover {
+    background-position: -492px 0;
+}
+
+.control .item-play .pause {
+    background-position: -324px 0;
+}
+
+.control .item-play .pause:hover {
+    background-position: -348px 0;
+}
+
+.control .item-next a {
+    background-position: -276px 0;
+}
+
+.control .item-next a:hover {
+    background-position: -180px 0;
+}
+
+.control .item-love a {
+    background-position: -396px 0;
+}
+
+.control .item-love a:hover {
+    background-position: -300px 0;
+}
+
+.control .item-delete a {
+    background-position: -60px 0;
+}
+
+.control .item-delete a:hover {
+    background-position: -612px 0;
+}
+
+.control li {
+    margin-right: 40px;
+}
+
+.control li:last-child {
+    margin-right: 0;
+}
+
+.song .song-progress {
+    position: relative;
+    left: -10px;
+    width: 260px;
+    background: #ccc;
+    height: 3px;
+    cursor: pointer;
+}
+
+.song-progress .progress-time {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 0%;
+    height: 3px;
+    background: #3385ff;
+}
+
+.song .song-time {
+    padding-top: 20px;
+}
+
+.song .song-time>span {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.song-time .play-time {
+    font-size: 18px;
+    font-weight: 500;
+    color: #666;
+    padding-right: 4px;
+}
+
+.song-time .total-time {
+    color: #666;
+}
+
+.song-time .voice a {
+    width: 13px;
+    height: 13px;
+    background:  no-repeat;
+    background-position: -696px 0;
+    margin-left: 20px;
+    display: block
+}
+
+.song-time .voice a:hover {
+    background-position: -684px 0;
+}
+
+.song-time .voice-progress {
+    width: 70px;
+    height: 5px;
+    background: #ccc;
+    margin-left: 5px;
+    border-radius: 5px;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.voice-progress .voice-setting {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 5px;
+    background: #3385ff;
+    transition: all 0.2s;
+}
+
+.pause-mask {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    display: none;
+}
+
+.pause-mask a {
+    display: block;
+    color: #fff;
+    text-align: center;
+    line-height: 240px;
+}
+.animated {
+    -webkit-animation-duration: 4s;
+    animation-duration: 4s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+}
+
+@keyframes bounceInLeft {
+    from, 60%, 75%, 90%, to {
+        -webkit-animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+        animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+    }
+
+    0% {
+        opacity: 0;
+        -webkit-transform: translate3d(-3000px, 0, 0);
+        transform: translate3d(-3000px, 0, 0);
+    }
+
+    60% {
+        opacity: 1;
+        -webkit-transform: translate3d(25px, 0, 0);
+        transform: translate3d(25px, 0, 0);
+    }
+
+    75% {
+        -webkit-transform: translate3d(-10px, 0, 0);
+        transform: translate3d(-10px, 0, 0);
+    }
+
+    90% {
+        -webkit-transform: translate3d(5px, 0, 0);
+        transform: translate3d(5px, 0, 0);
+    }
+
+    to {
+        -webkit-transform: none;
+        transform: none;
+    }
+}
+
+.bounceInLeft {
+    -webkit-animation-name: bounceInLeft;
+    animation-name: bounceInLeft;
+}

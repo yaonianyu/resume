@@ -1,0 +1,58 @@
+.pdd1{
+    width: 100%;
+    height: 110px;
+    background: #F5F5F5;
+}
+.pdd1 .sz1{
+    width: 100%;
+    height: 30px;
+    background: #15A230;
+    margin: auto;
+    position: relative;
+}
+.pdd1 .sz1 .gc1{
+    width:550px;
+    height: 30px;
+    /*background: purple;*/
+    position: absolute;
+    left: 175px;
+}
+.pdd1 .sz1 .gc1 ul{
+    width: 550px;
+    height: 30px;
+}
+.pdd1 .sz1 .gc1 ul li{
+    width: 60px;
+    float: left;
+    color: #ffffff;
+    font-size: 13px;
+    /*font-weight: bold;*/
+    line-height: 30px;text-align: center;
+}
+.pdd1 .sz1 .gc2{
+    width: 277px;
+    height: 30px;
+  /*  background: palegoldenrod;*/
+    position: absolute;
+    left: 915px;
+}
+.pdd1 .sz1 .gc2 .uu2{
+    width: 277px;
+    height: 30px;
+    font-size: 13px;
+    line-height: 30px;
+    color: #D6DBD7;
+    position: relative;
+}
+.pdd1 .sz1 .gc2 .uu2 .uu3{
+    width: 143px;
+    height: 30px;
+    font-size: 13.3px;
+    line-height: 30px;
+    color: white;
+    position: absolute;
+    top: 0px;
+    left: 117px;
+}
+
+

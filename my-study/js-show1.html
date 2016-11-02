@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JS实现轮播广告图</title>
+    <style>
+        .lunbo{
+            width: 1200px;     /*这里600x400是图片的宽高*/
+            height: 400px;
+            overflow: hidden;   /*隐藏溢出的图片，因为图片左浮动，总宽度为4200*/
+            position: relative;
+        }
+        .lunbo-img {
+            width: 6000px;   /*这里设置5张图片总宽度*/
+            height: 400px;
+            position: absolute;  /*基于父容器container进行定位*/
+            z-index: 1;
+        }
+        .lunbo-img img {
+            float: left;
+            width: 1200px;
+            height: 400px;
+        }
+        .lunbo-controlls {
+            position: absolute;
+            height: 10px;
+            width: 100px;
+            z-index: 2;   /*按钮在图片的上面*/
+            bottom: 20px;
+            left: 50%;
+        }
+        .lunbo-controlls span {
+            cursor: pointer;
+            float: left;
+            border: 1px solid #fff;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #333;
+            margin-right: 5px;
+        }
+        .lunbo-controlls .on {
+            background: orangered;   /*选中的按钮样式*/
+        }
+        .arrow {
+            cursor: pointer;
+            display: none;    /*左右切换按钮默认先隐藏*/
+            line-height: 39px;
+            text-align: center;
+            font-size: 36px;
+            font-weight: bold;
+            width: 40px;
+            height: 40px;
+            position: absolute;
+            z-index: 2;
+            top: 180px;
+            background-color: RGBA(0,0,0,.3);
+            color: #fff;
+        }
+        .arrow:hover {
+            background-color: RGBA(0,0,0,.7);
+        }
+        .lunbo:hover .arrow {
+            display: block;   /*当鼠标放上去容器上面就显示左右切换按钮*/
+        }
+        .prev {
+            left: 20px;
+        }
+        .next {
+            right: 20px;
+        }
+    </style>
+</head>
+<body>
+<div class="lunbo">
+    <div class="lunbo-img" style="left: -1200px;">
+        <a href="#"><img src="../../Images/Cups/banner1.jpg" alt="1"/></a>
+        <a href="#"><img src="../../Images/Cups/banner1.jpg" alt="1"/></a>
+        <a href="#"><img src="../../Images/Cups/banner2.jpg" alt="2"/></a>
+        <a href="#"><img src="../../Images/Cups/banner3.jpg" alt="3"/></a>
+        <a href="#"><img src="../../Images/Cups/banner1.jpg" alt="3"/></a>
+    </div>
+    <div class="lunbo-controlls">
+        <span index="1" class="on"></span>
+        <span index="2"></span>
+        <span index="3"></span>
+    </div>
+    <a href="javascript:;"  class="arrow prev">&lt;</a>
+    <a href="javascript:;"  class="arrow next">&gt;</a>
+</div>
+<script src="../../js/jquery-1.11.3.js"></script>
+<script>
+    window.onload = function () {
+        var lunbo =$('.lunbo');
+        var list =$('.lunbo-img').get(0);
+        var buttons = $('.lunbo-controlls>span');
+        var prev =$('.prev').get(0);//document.getElementById('prev');
+        var next = $('.next').get(0);//document.getElementById('next');
+        var index = 1;    //用于索引当前按钮
+        var len = 3;      //图片的数量
+        var animated = false;   //用于判断切换是否进行
+        var interval = 3000;    //自动播放定时器秒数，这里是3秒
+        var timer;             //定时器
+        var imgWidth=1200;
+
+
+        function animate (offset) {
+            animated = true;     //切换进行中
+            var time = 300;     //位移总时间
+            var inteval = 10;   //位移间隔时间
+            var speed = offset/(time/inteval);   //每次位移量
+            var left = parseInt(list.style.left) + offset; //目标值
+
+            var go = function (){
+                //这两种情况表示还在切换中
+                if ( (speed > 0 && parseInt(list.style.left) < left) || (speed < 0 && parseInt
+                        (list.style.left) > left)) {
+                    list.style.left = parseInt(list.style.left) + speed + 'px';
+                    setTimeout(go, inteval); //继续执行切换go()函数
+                }
+                else {
+                    list.style.left = left + 'px';
+                    if(left>-imgWidth){
+                        list.style.left = -imgWidth * len + 'px';
+                    }
+                    if(left<(-imgWidth * len)) {
+                        list.style.left = '-'+imgWidth+'px';
+                    }
+                    animated = false; //切换完成
+                }
+            }
+            go();
+        }
+        //用于为按钮添加样式
+        function showButton() {
+            //先找出原来有.on类的按钮，并移除其类
+            for (var i = 0; i < buttons.length ; i++) {
+                if( buttons[i].className == 'on'){
+                    buttons[i].className = '';
+                    break;
+                }
+            }
+            //为当前按钮添加类
+            buttons[index - 1].className = 'on';
+        }
+        //自动播放
+        function play() {
+            timer = setTimeout(function () {
+                next.onclick();
+                play();
+            }, interval);
+        }
+        //清除定时器
+        function stop() {
+            clearTimeout(timer);
+        }
+        //右点击
+        next.onclick = function () {
+            if (animated) {    //如果切换还在进行，则直接结束，直到切换完成
+                return;
+            }
+            if (index == len) {
+                index = 1;
+            }
+            else {
+                index += 1;
+            }
+            animate(-imgWidth);
+            showButton();
+        }
+        //左点击
+        prev.onclick = function () {
+            if (animated) {       //如果切换还在进行，则直接结束，直到切换完成
+                return;
+            }
+            if (index == 1) {
+                index = len;
+            }
+            else {
+                index -= 1;
+            }
+            animate(imgWidth);
+            showButton();
+        }
+
+        for (var i = 0; i < buttons.length; i++) {
+            buttons[i].onclick = function () {
+                if (animated) {         //如果切换还在进行，则直接结束，直到切换完成
+                    return;
+                }
+                if(this.className == 'on') {     //如果点击的按钮是当前的按钮，不切换，结束
+                    return;
+                }
+                //获取按钮的自定义属性index，用于得到索引值
+                var myIndex = parseInt(this.getAttribute('index'));
+                var offset = -imgWidth * (myIndex - index);   //计算总的位移量
+
+                animate(offset);
+                index = myIndex;   //将新的索引值赋值index
+                showButton();
+            }
+        }
+        lunbo.onmouseover = stop;//父容器的移入移出事件
+        lunbo.onmouseout = play;
+
+        play();  //调用自动播放函数
+
+    }
+</script>
+
+</body>
+</html>
